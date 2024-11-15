@@ -1,7 +1,11 @@
 import classNames from "classnames";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 
-const Widget = () => {
+interface WidgetProps {
+  isWebflow?: boolean;
+}
+
+const Widget: FC<WidgetProps> = ({ isWebflow }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -28,7 +32,7 @@ const Widget = () => {
         >
           x
         </div>
-        <h1>Widget</h1>
+        <h1>{isWebflow ? "Webflow" : "Next.js"} Widget</h1>
       </div>
     </div>
   );
