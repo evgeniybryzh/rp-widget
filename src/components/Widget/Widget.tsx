@@ -32,7 +32,7 @@ const Widget: FC<WidgetProps> = ({ isWebflow }) => {
         >
           x
         </div>
-        <h1>{isWebflow ? "Webflow" : "Next.js"} Widget</h1>
+        <h1 className="text-lg">{isWebflow ? "Webflow" : "Next.js"} Widget</h1>
       </div>
     </div>
   );
