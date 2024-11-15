@@ -1,0 +1,1 @@
+export const INITIAL_START_DELAY = 1000;

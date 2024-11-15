@@ -32,9 +32,27 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      // SCSS Modules
       {
-        test: /\.(sa|sc|c)ss$/, // Match styles
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        test: /\.(sa|sc)ss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              esModule: false,
+              modules: {
+                namedExport: false,
+              },
+            },
+          },
+        ],
+      },
+      // Global CSS and SCSS
+      {
+        test: /\.(sa|sc|c)ss$/, // Match global SCSS files
+        exclude: /\.module\.(sa|sc)ss$/, // Exclude SCSS module files
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/, // Match images and fonts
