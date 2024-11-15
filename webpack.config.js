@@ -16,7 +16,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: 3030,
+    port: 4000,
   },
   module: {
     rules: [
