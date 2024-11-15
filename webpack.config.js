@@ -34,7 +34,7 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/, // Match styles
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/, // Match images and fonts
