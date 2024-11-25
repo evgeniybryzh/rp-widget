@@ -1,4 +1,4 @@
-import Widget from "./components/main/Widget";
+import Widget from "./components/main/widget/Widget";
 
 interface AppProps {
   isWebflow?: boolean;
