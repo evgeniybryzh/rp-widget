@@ -18,6 +18,8 @@ export interface CardDataType {
   ctaText: string;
   webflowCTALink: string;
   appCTALink: string;
+  day?: string;
+  rate?: "1" | "2" | "3" | "4" | "5";
 }
 
 export interface IGenerateCardsData {

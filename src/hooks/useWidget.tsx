@@ -16,6 +16,7 @@ const useWidget = () => {
     }
   }, [googleData]);
 
+  // Show widget after a delay (initial)
   useEffect(() => {
     if (!isShown) {
       setTimeout(() => {

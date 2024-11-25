@@ -4,6 +4,7 @@ import {
   IGenerateCardsData,
 } from "../types/types";
 
+// Parse CSV text into an array of objects
 export const parseCSV = (csvText: string): GoogleSheetsInterface[] => {
   const rows = csvText.split(/\r?\n/); // Split CSV text into rows, handling '\r' characters
   if (rows.length < 2) {
@@ -28,6 +29,7 @@ export const parseCSV = (csvText: string): GoogleSheetsInterface[] => {
   return data;
 };
 
+// Normalize Google Sheets data into a common CardsData format
 export const normalizeGoogleSheetsData = (
   data: GoogleSheetsInterface[]
 ): CardDataType[] => {
@@ -41,8 +43,4 @@ export const normalizeGoogleSheetsData = (
       cardType: item.CardType,
     };
   });
-};
-
-export const generateCardsData = ({ cardsData }: IGenerateCardsData) => {
-  return cardsData;
 };
