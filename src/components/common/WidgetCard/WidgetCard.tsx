@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styles from "./WidgetCard.module.scss";
+import Icon from "../Icon/Icon";
 
 interface WidgetCardProps {
   hideWidget: () => void;
@@ -12,6 +13,7 @@ const WidgetCard: FC<WidgetCardProps> = ({ hideWidget, isWebflow }) => {
       <div onClick={hideWidget} className={styles.exit}>
         X
       </div>
+      <Icon name="close" />
     </div>
   );
 };

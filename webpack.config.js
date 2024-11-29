@@ -55,9 +55,21 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/, // Match images and fonts
+        test: /\.(png|woff|woff2|eot|ttf)$/, // Match images and fonts
         loader: "url-loader",
         options: { limit: false },
+      },
+      // SVG loader
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "@svgr/webpack",
+            options: {
+              svgo: true, // Enable SVG optimization
+            },
+          },
+        ],
       },
     ],
   },
