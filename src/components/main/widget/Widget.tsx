@@ -13,7 +13,17 @@ const Widget: FC<WidgetProps> = ({ isWebflow }) => {
 
   return (
     <div className={classNames(styles.widget, isShown && styles.shown)}>
-      <WidgetCard hideWidget={hideWidget} isWebflow={isWebflow} />
+      <WidgetCard
+        category="Third Party Transfer"
+        hideWidget={hideWidget}
+        isWebflow={isWebflow}
+        iconName={"solana"}
+        CTALink="https://www.relaypay.com/"
+        cityName="Adelaide"
+        cryptoCurrency="SOL"
+        period="Today"
+        bankName="Westpac"
+      />
     </div>
   );
 };

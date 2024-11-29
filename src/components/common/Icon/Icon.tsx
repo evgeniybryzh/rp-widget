@@ -11,7 +11,7 @@ import TRUSTPILOT from "../../../icons/Trustpilot.svg";
 import WARNING from "../../../icons/Warning.svg";
 import CLOSE from "../../../icons/Close.svg";
 
-const Icons = {
+export const Icons = {
   bitcoin: (className?: string) => <BTC className={className} />,
   cart: (className?: string) => <CART className={className} />,
   dogecoin: (className?: string) => <DOGE_COIN className={className} />,
@@ -25,7 +25,7 @@ const Icons = {
   close: (className?: string) => <CLOSE className={className} />,
 };
 
-interface IconProps {
+export interface IconProps {
   name: keyof typeof Icons;
   className?: string;
   color?: string;
