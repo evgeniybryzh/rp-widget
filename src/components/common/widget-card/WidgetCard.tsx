@@ -1,13 +1,13 @@
 import { FC } from "react";
 import styles from "./WidgetCard.module.scss";
-import Icon, { IconProps, Icons } from "../Icon/Icon";
+import Icon, { IconPaths } from "../Icon/Icon";
 import { CategoryType } from "../../../types/types";
 
 interface WidgetCardProps {
   category: CategoryType;
   hideWidget: () => void;
   isWebflow: boolean;
-  iconName: keyof typeof Icons;
+  iconName: keyof typeof IconPaths;
   CTALink: string;
 
   cityName?: string;

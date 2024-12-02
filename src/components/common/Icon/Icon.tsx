@@ -1,40 +1,41 @@
-import React, { FC, useMemo } from "react";
-import BTC from "../../../icons/Bitcoin.svg";
-import CART from "../../../icons/Cart.svg";
-import DOGE_COIN from "../../../icons/DogeCoin.svg";
-import ETHEREUM from "../../../icons/Ethereum.svg";
-import GIFT_CARD from "../../../icons/GiftCard.svg";
-import METAMASK from "../../../icons/Metamask.svg";
-import RELAY_PAY from "../../../icons/RelayPay.svg";
-import SOLANA from "../../../icons/Solana.svg";
-import TRUSTPILOT from "../../../icons/Trustpilot.svg";
-import WARNING from "../../../icons/Warning.svg";
-import CLOSE from "../../../icons/Close.svg";
+import React, { FC, useEffect, useMemo, useState } from "react";
 
-export const Icons = {
-  bitcoin: (className?: string) => <BTC className={className} />,
-  cart: (className?: string) => <CART className={className} />,
-  dogecoin: (className?: string) => <DOGE_COIN className={className} />,
-  ethereum: (className?: string) => <ETHEREUM className={className} />,
-  giftcard: (className?: string) => <GIFT_CARD className={className} />,
-  metamask: (className?: string) => <METAMASK className={className} />,
-  relaypay: (className?: string) => <RELAY_PAY className={className} />,
-  solana: (className?: string) => <SOLANA className={className} />,
-  trustpilot: (className?: string) => <TRUSTPILOT className={className} />,
-  warning: (className?: string) => <WARNING className={className} />,
-  close: (className?: string) => <CLOSE className={className} />,
+export const IconPaths = {
+  bitcoin: () => import("../../../icons/Bitcoin.svg"),
+  cart: () => import("../../../icons/Cart.svg"),
+  dogecoin: () => import("../../../icons/DogeCoin.svg"),
+  ethereum: () => import("../../../icons/Ethereum.svg"),
+  giftcard: () => import("../../../icons/GiftCard.svg"),
+  metamask: () => import("../../../icons/Metamask.svg"),
+  relaypay: () => import("../../../icons/RelayPay.svg"),
+  solana: () => import("../../../icons/Solana.svg"),
+  trustpilot: () => import("../../../icons/Trustpilot.svg"),
+  warning: () => import("../../../icons/Warning.svg"),
+  close: () => import("../../../icons/Close.svg"),
 };
 
 export interface IconProps {
-  name: keyof typeof Icons;
+  name: keyof typeof IconPaths;
   className?: string;
-  color?: string;
 }
 
 const Icon: FC<IconProps> = ({ className, name }) => {
-  const icon = useMemo(() => Icons[name](className), [name, className]);
+  const [IconComponent, setIconComponent] = useState<React.FC<
+    React.SVGProps<SVGSVGElement>
+  > | null>(null);
 
-  return <>{icon}</>;
+  useEffect(() => {
+    // Dynamically import the icon
+    IconPaths[name]().then((module) => {
+      setIconComponent(() => module.default);
+    });
+  }, [name]);
+
+  if (!IconComponent) {
+    return null; // Optionally, you can return a loading spinner or placeholder here
+  }
+
+  return <IconComponent className={className} />;
 };
 
 export default Icon;
