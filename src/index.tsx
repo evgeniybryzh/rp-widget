@@ -13,8 +13,10 @@ function initializeWidget() {
   }
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initializeWidget);
-} else {
+if (document.readyState === "complete") {
+  // Page has already fully loaded
   initializeWidget();
+} else {
+  // Wait for the entire page to load
+  window.addEventListener("load", initializeWidget);
 }
