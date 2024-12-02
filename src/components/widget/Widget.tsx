@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { FC } from "react";
-import WidgetCard from "../common/WidgetCard/WidgetCard";
+import WidgetCard from "../common//widget-card/WidgetCard";
 import styles from "./Widget.module.scss";
 import useWidget from "../../hooks/useWidget";
 
