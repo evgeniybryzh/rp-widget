@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import { FC } from "react";
-import WidgetCard from "../../common/WidgetCard/WidgetCard";
+import WidgetCard from "../common/WidgetCard/WidgetCard";
 import styles from "./Widget.module.scss";
-import useWidget from "../../../hooks/useWidget";
+import useWidget from "../../hooks/useWidget";
 
 interface WidgetProps {
   isWebflow: boolean;
