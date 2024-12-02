@@ -9,7 +9,7 @@ interface WidgetProps {
 }
 
 const Widget: FC<WidgetProps> = ({ isWebflow }) => {
-  const { hideWidget, isShown, cardsData } = useWidget();
+  const { hideWidget, isShown, cardsContent } = useWidget({ isWebflow });
 
   return (
     <div className={classNames(styles.widget, isShown && styles.shown)}>

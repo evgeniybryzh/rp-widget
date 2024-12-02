@@ -1,6 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const webpack = require("webpack");
+require("dotenv").config(); // No need to specify the path unless it's different
+
 module.exports = {
   entry: "./src/index.tsx", // Specify TypeScript entry point
   output: {
@@ -13,6 +16,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "src/index.html",
+    }),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env),
     }),
   ],
   devServer: {
