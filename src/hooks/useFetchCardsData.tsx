@@ -1,16 +1,9 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
+import { CardDataResponse } from "../types/types";
 
 interface UseFetchCardDataProps {
   isWebflow: boolean;
-}
-
-export interface CardDataResponse {
-  type: string | null;
-  city: string | null;
-  country: string | null;
-  bank: string | null;
-  token: string | null;
 }
 
 const WEBFLOW_API_URL = process.env.WEBFLOW_API_URL;
@@ -19,13 +12,8 @@ const APP_API_URL = process.env.APP_API_URL;
 const useFetchCardData = ({
   isWebflow = false,
 }: UseFetchCardDataProps): {
-  cardData: CardDataResponse | undefined;
   getCardData: typeof fetchData;
 } => {
-  const [cardData, setCardData] = useState<CardDataResponse | undefined>(
-    undefined
-  );
-
   const fetchData = useCallback(
     async (onSuccess?: (cardData: CardDataResponse) => void) => {
       if (!WEBFLOW_API_URL || !APP_API_URL) return;
@@ -45,10 +33,6 @@ const useFetchCardData = ({
           return;
         }
 
-        if (response.status === 200) {
-          setCardData(response.data);
-        }
-
         if (response.status === 200 && onSuccess) {
           onSuccess(response?.data);
         }
@@ -59,7 +43,7 @@ const useFetchCardData = ({
     [isWebflow]
   );
 
-  return { cardData, getCardData: fetchData };
+  return { getCardData: fetchData };
 };
 
 export default useFetchCardData;

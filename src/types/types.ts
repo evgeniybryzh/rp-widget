@@ -1,15 +1,26 @@
 export type CategoryType =
-  | "BPAY"
-  | "Third Party Transfer"
-  | "Self Transfer"
-  | "International Transfer"
-  | "Sign Up"
-  | "Gift Card"
-  | "Referral"
-  | "Buy"
-  | "Review";
+  | "BILL"
+  | "CREDIT_CARD"
+  | "THIRD_PARTY_INFO"
+  | "THIRD_PARTY_LOCAL"
+  | "SELF_TRANSFER_LOCAL"
+  | "INTERNATIONAL_TRANSFER"
+  | "SIGN_UP"
+  | "GIFT_CARD_INFO"
+  | "SCAM_INFO"
+  | "REFERRAL_INFO"
+  | "METAMASK_INFO"
+  | "BUY";
 
 export type CategoriesType = CategoryType[];
+
+export interface CardDataResponse {
+  type?: CategoryType | null;
+  city?: string | null;
+  country?: string | null;
+  bank?: string | null;
+  token?: string | null;
+}
 
 export interface CardDataType {
   cardType: string;

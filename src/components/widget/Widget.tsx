@@ -11,18 +11,20 @@ interface WidgetProps {
 const Widget: FC<WidgetProps> = ({ isWebflow }) => {
   const { hideWidget, isShown, cardContent } = useWidget({ isWebflow });
 
+  console.log(cardContent);
+
   return (
     <div className={classNames(styles.widget, isShown && styles.shown)}>
       <WidgetCard
-        category="Third Party Transfer"
+        category={cardContent?.type}
         hideWidget={hideWidget}
         isWebflow={isWebflow}
-        iconName={"solana"}
+        iconName="relaypay"
         CTALink="https://relaypay.io/"
-        cityName="Adelaide"
-        cryptoCurrency="SOL"
-        period="Today"
-        bankName="Westpac"
+        cityName={cardContent?.city}
+        cryptoCurrency={cardContent?.token}
+        period={undefined}
+        bankName={cardContent?.bank}
       />
     </div>
   );

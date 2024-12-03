@@ -4,7 +4,8 @@ import {
   REFETCH_CARD_DELAY,
   SESSION_STORAGE_NAME,
 } from "../constants/constants";
-import useFetchCardsData, { CardDataResponse } from "./useFetchCardsData";
+import useFetchCardsData from "./useFetchCardsData";
+import { CardDataResponse } from "../types/types";
 
 const useWidget = ({ isWebflow = false }: { isWebflow: boolean }) => {
   const [cardContent, setCardContent] = useState<
@@ -25,7 +26,7 @@ const useWidget = ({ isWebflow = false }: { isWebflow: boolean }) => {
     hideWidget();
   }, [hideWidget]);
 
-  const { cardData, getCardData } = useFetchCardsData({
+  const { getCardData } = useFetchCardsData({
     isWebflow,
   });
 

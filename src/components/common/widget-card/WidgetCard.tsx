@@ -4,16 +4,16 @@ import Icon, { IconPaths } from "../Icon/Icon";
 import { CategoryType } from "../../../types/types";
 
 interface WidgetCardProps {
-  category: CategoryType;
+  category?: CategoryType | null;
   hideWidget: () => void;
   isWebflow: boolean;
   iconName: keyof typeof IconPaths;
   CTALink: string;
 
-  cityName?: string;
-  cryptoCurrency?: string;
-  period?: "Today" | "Yesterday";
-  bankName?: string;
+  cityName?: string | null;
+  cryptoCurrency?: string | null;
+  period?: string | null;
+  bankName?: string | null;
 }
 const WidgetCard: FC<WidgetCardProps> = ({
   category,
@@ -28,7 +28,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
   bankName,
 }) => {
   switch (category) {
-    case "BPAY":
+    case "BILL":
       return (
         <div className={styles.card}>
           <Icon name={iconName} className={styles.icon} />
@@ -48,7 +48,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
         </div>
       );
 
-    case "Third Party Transfer":
+    case "THIRD_PARTY_INFO":
       return (
         <div className={styles.card}>
           <Icon name={iconName} className={styles.icon} />
@@ -70,7 +70,29 @@ const WidgetCard: FC<WidgetCardProps> = ({
       );
 
     default:
-      break;
+      return (
+        <div className={styles.card}>
+          <Icon name={"warning"} className={styles.icon} />
+          <div className={styles.content}>
+            <div className={styles.contentText}>
+              Someone{" "}
+              {cityName && (
+                <span>
+                  in <span>{cityName}</span>
+                </span>
+              )}{" "}
+              made a transaction <br /> using <span>{cryptoCurrency}</span>. ✓
+            </div>
+            <div className={styles.contentPeriod}>{period}</div>
+            <a className={styles.contentLink} href={CTALink} target={"_blank"}>
+              Pay your bills with crypto {">"}
+            </a>
+          </div>
+          <div onClick={hideWidget} className={styles.exit}>
+            <Icon name="close" />
+          </div>
+        </div>
+      );
   }
 };
 
