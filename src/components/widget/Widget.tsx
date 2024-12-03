@@ -18,7 +18,7 @@ const Widget: FC<WidgetProps> = ({ isWebflow }) => {
         hideWidget={hideWidget}
         isWebflow={isWebflow}
         iconName={"solana"}
-        CTALink="https://www.relaypay.com/"
+        CTALink="https://relaypay.io/"
         cityName="Adelaide"
         cryptoCurrency="SOL"
         period="Today"

@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface UseFetchCardsDataProps {
   isWebflow: boolean;
+  onSuccess?: () => void;
 }
 
 interface Response {
@@ -18,32 +19,48 @@ const APP_API_URL = process.env.APP_API_URL;
 
 const useFetchCardsData = ({
   isWebflow = false,
-}: UseFetchCardsDataProps): { cardsData: Response[] | undefined } => {
+  onSuccess,
+}: UseFetchCardsDataProps): {
+  cardsData: Response[] | undefined;
+  refetch: () => void;
+} => {
   const [cardsData, setCardsData] = useState<Response[] | undefined>(undefined);
 
-  useEffect(() => {
+  const fetchData = useCallback(async () => {
     if (!WEBFLOW_API_URL || !APP_API_URL) return;
 
-    const fetchData = async () => {
-      try {
-        const response = await axios.get<Response[]>(
-          isWebflow ? WEBFLOW_API_URL : APP_API_URL,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        setCardsData(response.data); // set the state with the response data
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
+    try {
+      const response = await axios.get<Response[]>(
+        isWebflow ? WEBFLOW_API_URL : APP_API_URL,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
+      if (!response.data) {
+        console.error("No data received from the server");
+        return;
+      }
+
+      if (response.status === 200) {
+        setCardsData(response.data);
+      }
+
+      if (response.status === 200 && onSuccess) {
+        onSuccess();
+      }
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  }, []);
+
+  useEffect(() => {
     fetchData(); // Trigger fetch when the component is mounted or the props change
   }, [isWebflow]); // Dependency array ensures the fetch happens when `isWebflow` changes
 
-  return { cardsData };
+  return { cardsData, refetch: fetchData };
 };
 
 export default useFetchCardsData;
