@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 
 interface UseFetchCardDataProps {
   isWebflow: boolean;
-  hideWidget?: () => void;
 }
 
 export interface CardDataResponse {
@@ -19,7 +18,6 @@ const APP_API_URL = process.env.APP_API_URL;
 
 const useFetchCardData = ({
   isWebflow = false,
-  hideWidget,
 }: UseFetchCardDataProps): {
   cardData: CardDataResponse | undefined;
   getCardData: typeof fetchData;
@@ -30,9 +28,7 @@ const useFetchCardData = ({
 
   const fetchData = useCallback(
     async (onSuccess?: (cardData: CardDataResponse) => void) => {
-      if (!WEBFLOW_API_URL || !APP_API_URL || !hideWidget) return;
-
-      hideWidget();
+      if (!WEBFLOW_API_URL || !APP_API_URL) return;
 
       try {
         const response = await axios.get<CardDataResponse>(
@@ -60,7 +56,7 @@ const useFetchCardData = ({
         console.error("Error fetching data: ", error);
       }
     },
-    [isWebflow, hideWidget]
+    [isWebflow]
   );
 
   return { cardData, getCardData: fetchData };

@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import {
   INITIAL_START_DELAY,
   REFETCH_CARD_DELAY,
+  SESSION_STORAGE_NAME,
 } from "../constants/constants";
 import useFetchCardsData, { CardDataResponse } from "./useFetchCardsData";
 
@@ -19,38 +20,62 @@ const useWidget = ({ isWebflow = false }: { isWebflow: boolean }) => {
     setIsShown(true);
   }, [setIsShown]);
 
+  const customerHideWidgetClick = useCallback(() => {
+    sessionStorage.setItem(SESSION_STORAGE_NAME, "false");
+    hideWidget();
+  }, [hideWidget]);
+
   const { cardData, getCardData } = useFetchCardsData({
     isWebflow,
-    hideWidget,
   });
 
   const onFetchSuccess = useCallback(
     (cardsData: CardDataResponse) => {
-      if (cardsData) {
-        console.log("cardsData: ", cardsData);
-        setCardContent(cardsData);
-        showWidget();
-      }
+      const shouldShowWidget = JSON.parse(
+        sessionStorage.getItem(SESSION_STORAGE_NAME) || "{}"
+      );
 
-      if (true) {
+      if (Boolean(shouldShowWidget)) {
+        if (cardsData) {
+          setCardContent(cardsData);
+          showWidget();
+        }
+
+        // Add condition below to prevent infinite loop (for example if sessionStorage doesn't include showWidget)
+
         setTimeout(() => {
-          getCardData(onFetchSuccess);
+          hideWidget();
+
+          setTimeout(() => {
+            getCardData(onFetchSuccess);
+          }, 1000);
         }, REFETCH_CARD_DELAY);
       }
     },
-    [getCardData, showWidget]
+    [getCardData, showWidget, hideWidget]
   );
 
   // Initial cardData fetch
   useEffect(() => {
-    if (!isShown) {
+    const shouldShowWidget = JSON.parse(
+      sessionStorage.getItem(SESSION_STORAGE_NAME) || "{}"
+    );
+
+    if (!isShown && Boolean(shouldShowWidget)) {
       setTimeout(() => {
         getCardData(onFetchSuccess);
       }, INITIAL_START_DELAY);
     }
   }, []);
 
-  return { isShown, hideWidget, cardContent };
+  // Set sessionStorage to true on first render
+  useEffect(() => {
+    if (!sessionStorage.getItem(SESSION_STORAGE_NAME)) {
+      sessionStorage.setItem(SESSION_STORAGE_NAME, "true");
+    }
+  }, []);
+
+  return { isShown, hideWidget: customerHideWidgetClick, cardContent };
 };
 
 export default useWidget;

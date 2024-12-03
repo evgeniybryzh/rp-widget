@@ -5,8 +5,6 @@ interface AppProps {
 }
 
 const App = ({ isWebflow = false }: AppProps) => {
-  console.log("isWebflow", isWebflow);
-
   return <Widget isWebflow={isWebflow} />;
 };
 
