@@ -1,4 +1,5 @@
-import { GoogleSheetsInterface } from "../types/types";
+import { CTA_LINKS } from "../constants/constants";
+import { CategoryType, GoogleSheetsInterface } from "../types/types";
 
 // Parse CSV text into an array of objects
 export const parseCSV = (csvText: string): GoogleSheetsInterface[] => {
@@ -23,4 +24,12 @@ export const parseCSV = (csvText: string): GoogleSheetsInterface[] => {
   }
 
   return data;
+};
+
+export const getCTALinks = (
+  category: CategoryType | null | undefined,
+  isWebflow: boolean
+) => {
+  if (!category) return "https://www.relaypay.io/";
+  return CTA_LINKS?.[category]?.[isWebflow ? "webflow" : "app"];
 };

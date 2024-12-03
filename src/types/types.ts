@@ -7,6 +7,7 @@ export type CategoryType =
   | "INTERNATIONAL_TRANSFER"
   | "SIGN_UP"
   | "GIFT_CARD_INFO"
+  | "GIFT_CARD"
   | "SCAM_INFO"
   | "REFERRAL_INFO"
   | "METAMASK_INFO"
