@@ -36,17 +36,16 @@ const useWidget = ({ isWebflow = false }: { isWebflow: boolean }) => {
         sessionStorage.getItem(SESSION_STORAGE_NAME) || "{}"
       );
 
+      // Check if widget should be shown
       if (Boolean(shouldShowWidget)) {
         if (cardsData) {
           setCardContent(cardsData);
           showWidget();
         }
 
-        // Add condition below to prevent infinite loop (for example if sessionStorage doesn't include showWidget)
-
+        // Fetch new card data after some time
         setTimeout(() => {
           hideWidget();
-
           setTimeout(() => {
             getCardData(onFetchSuccess);
           }, 1000);
