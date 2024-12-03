@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 
-interface UseFetchCardsDataProps {
+interface UseFetchCardDataProps {
   isWebflow: boolean;
-  onSuccess?: () => void;
+  hideWidget?: () => void;
 }
 
-interface Response {
+export interface CardDataResponse {
   type: string | null;
   city: string | null;
   country: string | null;
@@ -17,50 +17,53 @@ interface Response {
 const WEBFLOW_API_URL = process.env.WEBFLOW_API_URL;
 const APP_API_URL = process.env.APP_API_URL;
 
-const useFetchCardsData = ({
+const useFetchCardData = ({
   isWebflow = false,
-  onSuccess,
-}: UseFetchCardsDataProps): {
-  cardsData: Response[] | undefined;
-  refetch: () => void;
+  hideWidget,
+}: UseFetchCardDataProps): {
+  cardData: CardDataResponse | undefined;
+  getCardData: typeof fetchData;
 } => {
-  const [cardsData, setCardsData] = useState<Response[] | undefined>(undefined);
+  const [cardData, setCardData] = useState<CardDataResponse | undefined>(
+    undefined
+  );
 
-  const fetchData = useCallback(async () => {
-    if (!WEBFLOW_API_URL || !APP_API_URL) return;
+  const fetchData = useCallback(
+    async (onSuccess?: (cardData: CardDataResponse) => void) => {
+      if (!WEBFLOW_API_URL || !APP_API_URL || !hideWidget) return;
 
-    try {
-      const response = await axios.get<Response[]>(
-        isWebflow ? WEBFLOW_API_URL : APP_API_URL,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
+      hideWidget();
+
+      try {
+        const response = await axios.get<CardDataResponse>(
+          isWebflow ? WEBFLOW_API_URL : APP_API_URL,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.data) {
+          console.error("No data received from the server");
+          return;
         }
-      );
 
-      if (!response.data) {
-        console.error("No data received from the server");
-        return;
+        if (response.status === 200) {
+          setCardData(response.data);
+        }
+
+        if (response.status === 200 && onSuccess) {
+          onSuccess(response?.data);
+        }
+      } catch (error) {
+        console.error("Error fetching data: ", error);
       }
+    },
+    [isWebflow, hideWidget]
+  );
 
-      if (response.status === 200) {
-        setCardsData(response.data);
-      }
-
-      if (response.status === 200 && onSuccess) {
-        onSuccess();
-      }
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchData(); // Trigger fetch when the component is mounted or the props change
-  }, [isWebflow]); // Dependency array ensures the fetch happens when `isWebflow` changes
-
-  return { cardsData, refetch: fetchData };
+  return { cardData, getCardData: fetchData };
 };
 
-export default useFetchCardsData;
+export default useFetchCardData;

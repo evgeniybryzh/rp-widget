@@ -22,10 +22,6 @@ export interface CardDataType {
   rate?: "1" | "2" | "3" | "4" | "5";
 }
 
-export interface IGenerateCardsData {
-  cardsData?: CardDataType[];
-}
-
 export interface GoogleSheetsInterface {
   htmlText: string;
   CTAText: string;

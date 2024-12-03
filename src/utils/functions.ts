@@ -1,8 +1,4 @@
-import {
-  CardDataType,
-  GoogleSheetsInterface,
-  IGenerateCardsData,
-} from "../types/types";
+import { GoogleSheetsInterface } from "../types/types";
 
 // Parse CSV text into an array of objects
 export const parseCSV = (csvText: string): GoogleSheetsInterface[] => {
@@ -27,20 +23,4 @@ export const parseCSV = (csvText: string): GoogleSheetsInterface[] => {
   }
 
   return data;
-};
-
-// Normalize Google Sheets data into a common CardsData format
-export const normalizeGoogleSheetsData = (
-  data: GoogleSheetsInterface[]
-): CardDataType[] => {
-  return data.map((item) => {
-    return {
-      htmlText: item.htmlText,
-      ctaText: item.CTAText,
-      webflowCTALink: item.WebflowCTALink,
-      appCTALink: item.AppCTALink,
-      iconName: item.IconName,
-      cardType: item.CardType,
-    };
-  });
 };
