@@ -362,7 +362,14 @@ const WidgetCard: FC<WidgetCardProps> = ({
                   in <span>{cityName}</span>
                 </span>
               )}{" "}
-              made a transaction <br /> using <span>{cryptoCurrency}</span>. ✓
+              made a transaction{" "}
+              {cryptoCurrency && (
+                <>
+                  <br />
+                  using
+                  <span>{cryptoCurrency}</span>. ✓
+                </>
+              )}
             </div>
             <div className={styles.contentPeriod}>{period}</div>
             <a className={styles.contentLink} href={CTALink} target={"_blank"}>

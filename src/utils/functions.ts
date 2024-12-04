@@ -36,6 +36,7 @@ export const getCTALinks = (
 };
 
 export const getCryptoIcon = (symbol: string) => {
+  if (!symbol) return RelayPayIcon;
   try {
     return require(`cryptocurrency-icons/svg/color/${symbol.toLowerCase()}.svg`)
       .default;
