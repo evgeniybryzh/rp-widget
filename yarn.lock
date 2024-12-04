@@ -1967,6 +1967,16 @@ cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+crypto-symbol@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/crypto-symbol/-/crypto-symbol-3.6.0.tgz#18d4a4d6ce8e87f2ae95e577fc6b9c69bd2692cf"
+  integrity sha512-qUgh4JHT+GzpHbliZ/fSOhMQoRynPF6/l22iUkCjuA2uiuJ0jDiaIAVfXO/QumQtvZJYW5v+lqMlPsmIfb/O0A==
+
+cryptocurrency-icons@^0.18.1:
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/cryptocurrency-icons/-/cryptocurrency-icons-0.18.1.tgz#b1bdbfb4b78996ec003e63dbd7ec0b830d23b89c"
+  integrity sha512-dvR5O8JOmav3559Yb0Igpkia+3vpt/aeNvMu5ZIVUG2Bzpq9wNcOJRIQas49XJrPjtZ98GAEn3aDQO+w7uhS2w==
+
 css-loader@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-7.1.2.tgz#64671541c6efe06b0e22e750503106bdd86880f8"

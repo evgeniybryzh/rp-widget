@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { FC, useEffect } from "react";
-import WidgetCard from "../common//widget-card/WidgetCard";
+import { FC } from "react";
+import WidgetCard from "../common//widget-cards/WidgetCard";
 import styles from "./Widget.module.scss";
 import useWidget from "../../hooks/useWidget";
 import { getCTALinks } from "../../utils/functions";
@@ -12,21 +12,21 @@ interface WidgetProps {
 const Widget: FC<WidgetProps> = ({ isWebflow }) => {
   const { hideWidget, isShown, cardContent } = useWidget({ isWebflow });
 
-  console.log(cardContent);
-
   return (
     <div className={classNames(styles.widget, isShown && styles.shown)}>
       <WidgetCard
         category={cardContent?.type}
         hideWidget={hideWidget}
         isWebflow={isWebflow}
-        iconName="relaypay"
         CTALink={getCTALinks(cardContent?.type, isWebflow)}
         cityName={cardContent?.city}
-        cryptoCurrency={cardContent?.token}
+        cryptoCurrency={cardContent?.coinName}
         period={"Yesterday/Today"}
         bankName={cardContent?.bank}
         countryName={cardContent?.country}
+        coinSymbol={cardContent?.coinSymbol}
+        title={cardContent?.title}
+        text={cardContent?.text}
       />
     </div>
   );

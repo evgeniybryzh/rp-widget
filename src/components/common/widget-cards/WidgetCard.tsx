@@ -1,13 +1,14 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import styles from "./WidgetCard.module.scss";
 import Icon, { IconPaths } from "../Icon/Icon";
 import { CategoryType } from "../../../types/types";
+import { getCryptoIcon } from "../../../utils/functions";
+import WidgetCardInfo from "./components/WidgetCardInfo";
 
 interface WidgetCardProps {
   category?: CategoryType | null;
   hideWidget: () => void;
   isWebflow: boolean;
-  iconName: keyof typeof IconPaths;
   CTALink: string;
 
   cityName?: string | null;
@@ -15,26 +16,34 @@ interface WidgetCardProps {
   period?: string | null;
   bankName?: string | null;
   countryName?: string | null;
+  coinSymbol?: string | null;
+  title?: string | null;
+  text?: string | null;
 }
 const WidgetCard: FC<WidgetCardProps> = ({
   category,
   hideWidget,
   isWebflow,
-  iconName,
   CTALink,
-
   cityName,
   cryptoCurrency,
   period,
   bankName,
   countryName,
+  coinSymbol,
+  text,
+  title,
 }) => {
+  const IconComponent = useMemo(() => {
+    return getCryptoIcon(coinSymbol || "");
+  }, [coinSymbol]);
+
   switch (category) {
     case "BILL":
       return (
         <div className={styles.card}>
           <div>
-            <Icon name="ethereum" className={styles.icon} />
+            <IconComponent className={styles.icon} />
           </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
@@ -56,7 +65,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <Icon name="ethereum" className={styles.icon} />
+            <IconComponent className={styles.icon} />
           </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
@@ -79,7 +88,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <Icon name="solana" className={styles.icon} />
+            <IconComponent className={styles.icon} />
           </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
@@ -102,7 +111,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <Icon name="bitcoin" className={styles.icon} />
+            <IconComponent className={styles.icon} />
           </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
@@ -125,7 +134,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <Icon name="ethereum" className={styles.icon} />
+            <IconComponent className={styles.icon} />
           </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
@@ -165,6 +174,49 @@ const WidgetCard: FC<WidgetCardProps> = ({
         </div>
       );
 
+    case "REFERRAL_SIGNUP":
+      return (
+        <div className={styles.card}>
+          <div>
+            <Icon name="relaypay" className={styles.icon} />
+          </div>
+          <div className={styles.content}>
+            <div className={styles.contentText}>
+              Someone's <span>referral</span> signed up to RelayPay.
+            </div>
+            <div className={styles.contentPeriod}>{period}</div>
+            <a className={styles.contentLink} href={CTALink} target={"_blank"}>
+              Refer & Earn: Login and share your link {">"}
+            </a>
+          </div>
+          <div onClick={hideWidget} className={styles.exit}>
+            <Icon name="close" />
+          </div>
+        </div>
+      );
+
+    case "REFERRAL_REDEMPTION":
+      return (
+        <div className={styles.card}>
+          <div>
+            <Icon name="relaypay" className={styles.icon} />
+          </div>
+          <div className={styles.content}>
+            <div className={styles.contentText}>
+              Someone <span>earned reward dollars</span> <br /> when their
+              referral made a transaction.
+            </div>
+            <div className={styles.contentPeriod}>{period}</div>
+            <a className={styles.contentLink} href={CTALink} target={"_blank"}>
+              Refer & Earn: Login and share your link {">"}
+            </a>
+          </div>
+          <div onClick={hideWidget} className={styles.exit}>
+            <Icon name="close" />
+          </div>
+        </div>
+      );
+
     case "GIFT_CARD":
       return (
         <div className={styles.card}>
@@ -180,27 +232,6 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a className={styles.contentLink} href={CTALink} target={"_blank"}>
               Buy with crypto, shop at top brands {">"}
-            </a>
-          </div>
-          <div onClick={hideWidget} className={styles.exit}>
-            <Icon name="close" />
-          </div>
-        </div>
-      );
-
-    case "REFERRAL_INFO":
-      return (
-        <div className={styles.card}>
-          <div>
-            <Icon name="relaypay" className={styles.icon} />
-          </div>
-          <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone's <span>referral</span> signed up to RelayPay
-            </div>
-            <div className={styles.contentPeriod}>{period}</div>
-            <a className={styles.contentLink} href={CTALink} target={"_blank"}>
-              Refer & Earn: Login and share your link {">"}
             </a>
           </div>
           <div onClick={hideWidget} className={styles.exit}>
@@ -231,89 +262,84 @@ const WidgetCard: FC<WidgetCardProps> = ({
         </div>
       );
 
+    // INFO CARDS BELOW:
+    case "REFERRAL_INFO":
+      return (
+        <WidgetCardInfo
+          CTALink={CTALink}
+          CTAText="Refer & Earn: Login and share your link >"
+          onClick={hideWidget}
+          iconName="relaypay"
+          text={text}
+          title={title}
+        />
+      );
+
     case "SCAM_INFO":
       return (
-        <div className={styles.card}>
-          <div>
-            <Icon name="dogecoin" className={styles.icon} />
-          </div>
-          <div className={styles.content}>
-            <div className={styles.contentTitle}>💡 Did you know?</div>
-            <div className={styles.contentText}>
-              <span>Crypto Scams in Australia:</span> <br />
-              Tips to Spot, Stay Safe. with RelayPay.
-            </div>
-
-            <a className={styles.contentLink} href={CTALink} target={"_blank"}>
-              Read our guide {">"}
-            </a>
-          </div>
-          <div onClick={hideWidget} className={styles.exit}>
-            <Icon name="close" />
-          </div>
-        </div>
+        <WidgetCardInfo
+          CTALink={CTALink}
+          CTAText="Read our guide >"
+          onClick={hideWidget}
+          iconName="warning"
+          text={text}
+          title={title}
+        />
       );
 
     case "THIRD_PARTY_INFO":
       return (
-        <div className={styles.card}>
-          <div>
-            <Icon name="cart" className={styles.icon} />
-          </div>
-          <div className={styles.content}>
-            <div className={styles.contentTitle}>💡 Did you know?</div>
-            <div className={styles.contentText}>
-              <span>Accept crypto payments</span> for your business and simply{" "}
-              <span>be paid in dollars.</span>
-            </div>
-
-            <a className={styles.contentLink} href={CTALink} target={"_blank"}>
-              Discover the business benefits {">"}
-            </a>
-          </div>
-          <div onClick={hideWidget} className={styles.exit}>
-            <Icon name="close" />
-          </div>
-        </div>
+        <WidgetCardInfo
+          CTALink={CTALink}
+          CTAText="Discover the business benefits >"
+          onClick={hideWidget}
+          iconName="cart"
+          text={text}
+          title={title}
+        />
       );
 
     case "GIFT_CARD_INFO":
       return (
-        <div className={styles.card}>
-          <div>
-            <Icon name="giftcard" className={styles.icon} />
-          </div>
-          <div className={styles.content}>
-            <div className={styles.contentTitle}>💡 Did you know?</div>
-            <div className={styles.contentText}>
-              <span>RelayPay Gift Cards</span> can be redeemed at <br />
-              <span>JB Hi-Fi, Bunnings, Uber Eats</span> & more.
-            </div>
-
-            <a className={styles.contentLink} href={CTALink} target={"_blank"}>
-              Buy with crypto, shop at top brands {">"}
-            </a>
-          </div>
-          <div onClick={hideWidget} className={styles.exit}>
-            <Icon name="close" />
-          </div>
-        </div>
+        <WidgetCardInfo
+          CTALink={CTALink}
+          CTAText="Buy with crypto, shop at top brands >"
+          onClick={hideWidget}
+          iconName="giftcard"
+          text={text}
+          title={title}
+        />
       );
 
     case "METAMASK_INFO":
       return (
+        <WidgetCardInfo
+          CTALink={CTALink}
+          CTAText="Read our guide >"
+          onClick={hideWidget}
+          iconName="metamask"
+          text={text}
+          title={title}
+        />
+      );
+
+    // REVIEW CARD BELOW
+    case "REVIEW":
+      return (
         <div className={styles.card}>
           <div>
-            <Icon name="metamask" className={styles.icon} />
+            <Icon name="trustpilot" className={styles.icon} />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentTitle}>💡 Did you know?</div>
-            <div className={styles.contentText}>
-              <span>BPAY Bills with MetaMask</span> in Australia using RelayPay.
+            <div className={styles.contentTitle}>
+              <Icon name="trustpilotReview" className={styles.reviewIcon} />
             </div>
-
+            <div className={styles.contentText}>
+              RelayPay received <span>5 stars on TrustPilot.</span>
+            </div>
+            <div className={styles.contentPeriod}>{period}</div>
             <a className={styles.contentLink} href={CTALink} target={"_blank"}>
-              Read our guide {">"}
+              Write your review {">"}
             </a>
           </div>
           <div onClick={hideWidget} className={styles.exit}>

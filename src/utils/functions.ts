@@ -1,5 +1,6 @@
 import { CTA_LINKS } from "../constants/constants";
 import { CategoryType, GoogleSheetsInterface } from "../types/types";
+import RelayPayIcon from "../icons/RelayPay.svg";
 
 // Parse CSV text into an array of objects
 export const parseCSV = (csvText: string): GoogleSheetsInterface[] => {
@@ -32,4 +33,14 @@ export const getCTALinks = (
 ) => {
   if (!category) return "https://www.relaypay.io/";
   return CTA_LINKS?.[category]?.[isWebflow ? "webflow" : "app"];
+};
+
+export const getCryptoIcon = (symbol: string) => {
+  try {
+    return require(`cryptocurrency-icons/svg/color/${symbol.toLowerCase()}.svg`)
+      .default;
+  } catch (error) {
+    console.error("Icon not found", error);
+    return RelayPayIcon;
+  }
 };

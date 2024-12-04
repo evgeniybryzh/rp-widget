@@ -7,17 +7,20 @@ export const REFETCH_CARD_DELAY = 10000;
 export const CATEGORIES: CategoriesType = [
   "BILL",
   "CREDIT_CARD",
-  "THIRD_PARTY_INFO",
   "THIRD_PARTY_LOCAL",
   "SELF_TRANSFER_LOCAL",
   "INTERNATIONAL_TRANSFER",
   "SIGN_UP",
-  "GIFT_CARD_INFO",
   "GIFT_CARD",
+  "BUY",
+  "REVIEW",
+  "REFERRAL_REDEMPTION",
+  "REFERRAL_SIGNUP",
+  // Info cards:
+  "THIRD_PARTY_INFO",
   "SCAM_INFO",
   "REFERRAL_INFO",
   "METAMASK_INFO",
-  "BUY",
 ];
 
 export const SESSION_STORAGE_NAME = "showWidget";
@@ -85,5 +88,19 @@ export const CTA_LINKS: {
     webflow:
       "https://www.relaypay.io/buy-crypto?utm_source=popup&utm_medium=website",
     app: "https://app.relaypay.io/personal/buy-crypto?utm_source=popup&utm_medium=website",
+  },
+  REFERRAL_SIGNUP: {
+    webflow:
+      "https://app.relaypay.io/sign-in?utm_source=popup&utm_medium=website",
+    app: "https://app.relaypay.io/personal/profile/referrals?utm_source=popup&utm_medium=website",
+  },
+  REFERRAL_REDEMPTION: {
+    webflow:
+      "https://app.relaypay.io/sign-in?utm_source=popup&utm_medium=website",
+    app: "https://app.relaypay.io/personal/profile/referrals?utm_source=popup&utm_medium=website",
+  },
+  REVIEW: {
+    webflow: "https://au.trustpilot.com/evaluate/relaypay.io",
+    app: "https://au.trustpilot.com/evaluate/relaypay.io",
   },
 };

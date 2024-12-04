@@ -1,17 +1,14 @@
 import React, { FC, useEffect, useMemo, useState } from "react";
 
 export const IconPaths = {
-  bitcoin: () => import("../../../icons/Bitcoin.svg"),
   cart: () => import("../../../icons/Cart.svg"),
-  dogecoin: () => import("../../../icons/DogeCoin.svg"),
-  ethereum: () => import("../../../icons/Ethereum.svg"),
   giftcard: () => import("../../../icons/GiftCard.svg"),
   metamask: () => import("../../../icons/Metamask.svg"),
   relaypay: () => import("../../../icons/RelayPay.svg"),
-  solana: () => import("../../../icons/Solana.svg"),
   trustpilot: () => import("../../../icons/Trustpilot.svg"),
   warning: () => import("../../../icons/Warning.svg"),
   close: () => import("../../../icons/Close.svg"),
+  trustpilotReview: () => import("../../../icons/TrustpilotReview.svg"),
 };
 
 export interface IconProps {
