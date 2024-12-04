@@ -6,8 +6,29 @@ interface UseFetchCardDataProps {
   isWebflow: boolean;
 }
 
+const ACCESS_TOKEN = "ACCESS_TOKEN";
+
 const WEBFLOW_API_URL = process.env.WEBFLOW_API_URL;
 const APP_API_URL = process.env.APP_API_URL;
+
+export const axiosClient = axios.create();
+
+axiosClient.interceptors.request.use(
+  function (config) {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN)?.replaceAll('"', "");
+    const isPrivate = APP_API_URL?.includes("/private");
+
+    if (accessToken && accessToken !== "null" && isPrivate) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    } else {
+      delete config.headers.Authorization;
+    }
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
 
 const useFetchCardData = ({
   isWebflow = false,
@@ -19,7 +40,7 @@ const useFetchCardData = ({
       if (!WEBFLOW_API_URL || !APP_API_URL) return;
 
       try {
-        const response = await axios.get<CardDataResponse>(
+        const response = await axiosClient.get<CardDataResponse>(
           isWebflow ? WEBFLOW_API_URL : APP_API_URL,
           {
             headers: {
