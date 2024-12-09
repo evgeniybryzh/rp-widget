@@ -15,13 +15,18 @@ const Widget: FC<WidgetProps> = ({ isWebflow }) => {
   return (
     <div className={classNames(styles.widget, isShown && styles.shown)}>
       <WidgetCard
-        category={cardContent?.type}
+        category={cardContent?.template}
         hideWidget={hideWidget}
         isWebflow={isWebflow}
-        CTALink={getCTALinks(cardContent?.type, isWebflow)}
+        // CTALink={getCTALinks(cardContent?.template, isWebflow)}
+        CTALink={
+          (isWebflow
+            ? cardContent?.anonymousLink
+            : cardContent?.loggedInLink) || ""
+        }
         cityName={cardContent?.city}
         cryptoCurrency={cardContent?.coinName}
-        period={"Yesterday/Today"}
+        period={cardContent?.timeline}
         bankName={cardContent?.bank}
         countryName={cardContent?.country}
         coinSymbol={cardContent?.coinSymbol}

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styles from "../WidgetCard.module.scss";
 import Icon from "../../Icon/Icon";
 
-interface WidgetCardInfoProps {
+interface WidgetCardDidYouKnowProps {
   title?: string | null;
   text?: string | null;
   iconName?: "giftcard" | "warning" | "metamask" | "relaypay" | "cart";
@@ -11,7 +11,7 @@ interface WidgetCardInfoProps {
   CTAText: string;
 }
 
-const WidgetCardInfo: FC<WidgetCardInfoProps> = ({
+const WidgetCardDidYouKnow: FC<WidgetCardDidYouKnowProps> = ({
   text,
   title,
   CTALink,
@@ -25,10 +25,11 @@ const WidgetCardInfo: FC<WidgetCardInfoProps> = ({
         <Icon name={iconName} className={styles.icon} />
       </div>
       <div className={styles.content}>
-        <div
+        {/* <div
           className={styles.contentTitle}
           dangerouslySetInnerHTML={{ __html: title || "" }}
-        />
+        /> */}
+        <div className={styles.contentTitle}>💡 Did you know?</div>
         <div
           className={styles.contentText}
           dangerouslySetInnerHTML={{ __html: text || "" }}
@@ -45,4 +46,4 @@ const WidgetCardInfo: FC<WidgetCardInfoProps> = ({
   );
 };
 
-export default WidgetCardInfo;
+export default WidgetCardDidYouKnow;
