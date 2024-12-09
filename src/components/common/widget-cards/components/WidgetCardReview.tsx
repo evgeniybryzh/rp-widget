@@ -1,8 +1,7 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "../WidgetCard.module.scss";
 import IconExit from "../../Icons/IconExit";
 import IconTrustpilot from "../../Icons/IconTrustpilot";
-// import Icon from "../../Icon/Icon";
 
 interface WidgetCardReviewProps {
   text?: string | null;
