@@ -7,6 +7,7 @@ import IconExit from "../Icons/IconExit";
 import IconGiftCard from "../Icons/IconGiftCard";
 import IconRelayPay from "../Icons/IconRelayPay";
 import { getCoinLogoLink } from "../../../utils/getCoinLogo";
+import { getCTALinks } from "../../../utils/functions";
 
 interface WidgetCardProps {
   category?: CategoryType | null;
@@ -46,6 +47,14 @@ const WidgetCard: FC<WidgetCardProps> = ({
     return getCoinLogoLink(cryptoCurrency, coinSymbol);
   }, [coinSymbol, cryptoCurrency, iconUrl]);
 
+  const cardCTALink = useMemo(() => {
+    if (CTALink && CTALink?.length > 0) {
+      return CTALink;
+    }
+
+    return getCTALinks(category, isWebflow);
+  }, [CTALink, category, isWebflow]);
+
   switch (category) {
     case "SELL_BPAY_BILL":
       return (
@@ -61,7 +70,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >
@@ -89,7 +98,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >
@@ -117,7 +126,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >
@@ -145,7 +154,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >
@@ -173,7 +182,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >
@@ -201,7 +210,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >
@@ -227,7 +236,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >
@@ -254,7 +263,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >
@@ -280,7 +289,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >
@@ -307,7 +316,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >
@@ -324,7 +333,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
     case "REVIEW_TEMPLATE2":
       return (
         <WidgetCardReview
-          CTALink={CTALink}
+          CTALink={cardCTALink}
           onClick={hideWidget}
           text={text}
           period={period || ""}
@@ -344,7 +353,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
     case "DID_YOU_KNOW_REFERRAL_REDEMPTION":
       return (
         <WidgetCardDidYouKnow
-          CTALink={CTALink}
+          CTALink={cardCTALink}
           CTAText="Read our guide >"
           onClick={hideWidget}
           iconName="metamask"
@@ -379,7 +388,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
-              href={CTALink}
+              href={cardCTALink}
               target={"_blank"}
               rel="noreferrer"
             >

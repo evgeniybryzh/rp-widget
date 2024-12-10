@@ -36,63 +36,41 @@ export const CTA_LINKS: {
     app: string;
   };
 } = {
-  BILL: {
+  SELL_BPAY_BILL: {
     webflow:
       "https://www.relaypay.io/bill-payments?utm_source=popup&utm_medium=website",
     app: "https://app.relaypay.io/personal/sell-crypto/bill-payments?utm_source=popup&utm_medium=website",
   },
-  CREDIT_CARD: {
+  SELL_BPAY_CREDIT_CARD: {
     webflow: "https://www.relaypay.io/bill-payments",
     app: "https://app.relaypay.io/personal/sell-crypto/bill-payments?utm_source=popup&utm_medium=website",
   },
-  THIRD_PARTY_INFO: {
-    webflow:
-      "https://www.relaypay.io/post/accept-crypto-payments-australia-business-guide?utm_source=popup&utm_medium=website",
-    app: "https://www.relaypay.io/post/accept-crypto-payments-australia-business-guide?utm_source=popup&utm_medium=website",
-  },
-  THIRD_PARTY_LOCAL: {
+  SELL_THIRD_PARTY_TRANSFER: {
     webflow: "https://www.relaypay.io/crypto-bank-transfer",
     app: "https://app.relaypay.io/personal/sell-crypto?utm_source=popup&utm_medium=website",
   },
-  SELF_TRANSFER_LOCAL: {
+  SELL_SELF_TRANSFER: {
     webflow:
       "https://www.relaypay.io/crypto-bank-transfer?utm_source=popup&utm_medium=website",
     app: "https://app.relaypay.io/personal/sell-crypto?utm_source=popup&utm_medium=website",
   },
-  INTERNATIONAL_TRANSFER: {
+  SELL_INTERNATIONAL_TRANSFER: {
     webflow: "https://www.relaypay.io/crypto-bank-transfer",
     app: "https://app.relaypay.io/personal/sell-crypto?utm_source=popup&utm_medium=website",
   },
-  SIGN_UP: {
-    webflow:
-      "https://app.relaypay.io/sign-up?utm_source=popup&utm_medium=website",
-    app: "https://app.relaypay.io/personal/sell-crypto?utm_source=popup&utm_medium=website",
-  },
-  GIFT_CARD_INFO: {
+  SELL_GIFT_CARD: {
     webflow: "https://www.relaypay.io/gift-card-purchase",
     app: "https://app.relaypay.io/personal/sell-crypto/gift-cards?utm_source=popup&utm_medium=website",
-  },
-  GIFT_CARD: {
-    webflow: "https://www.relaypay.io/gift-card-purchase",
-    app: "https://app.relaypay.io/personal/sell-crypto/gift-cards?utm_source=popup&utm_medium=website",
-  },
-  SCAM_INFO: {
-    webflow:
-      "https://www.relaypay.io/post/crypto-investment-scams-australia-how-to-avoid?utm_source=popup&utm_medium=website",
-    app: "https://www.relaypay.io/post/crypto-investment-scams-australia-how-to-avoid?utm_source=popup&utm_medium=website",
-  },
-  REFERRAL_INFO: {
-    webflow: "https://www.relaypay.io/referral",
-    app: "https://app.relaypay.io/personal/profile/referrals?utm_source=popup&utm_medium=website",
-  },
-  METAMASK_INFO: {
-    webflow: "https://www.relaypay.io/post/pay-bills-with-metamask-australia",
-    app: "https://www.relaypay.io/post/pay-bills-with-metamask-australia?utm_source=popup&utm_medium=website",
   },
   BUY: {
     webflow:
       "https://www.relaypay.io/buy-crypto?utm_source=popup&utm_medium=website",
     app: "https://app.relaypay.io/personal/buy-crypto?utm_source=popup&utm_medium=website",
+  },
+  SIGN_UP: {
+    webflow:
+      "https://app.relaypay.io/sign-up?utm_source=popup&utm_medium=website",
+    app: "https://app.relaypay.io/personal/sell-crypto?utm_source=popup&utm_medium=website",
   },
   REFERRAL_SIGNUP: {
     webflow:
@@ -104,8 +82,62 @@ export const CTA_LINKS: {
       "https://app.relaypay.io/sign-in?utm_source=popup&utm_medium=website",
     app: "https://app.relaypay.io/personal/profile/referrals?utm_source=popup&utm_medium=website",
   },
-  REVIEW: {
+
+  // REVIEW CARDS:
+  REVIEW_TEMPLATE1: {
     webflow: "https://au.trustpilot.com/evaluate/relaypay.io",
     app: "https://au.trustpilot.com/evaluate/relaypay.io",
+  },
+  REVIEW_TEMPLATE2: {
+    webflow: "https://au.trustpilot.com/evaluate/relaypay.io",
+    app: "https://au.trustpilot.com/evaluate/relaypay.io",
+  },
+
+  // DID YOU KNOW CARDS:
+  DID_YOU_KNOW_SELL_BPAY: {
+    webflow:
+      "https://www.relaypay.io/bill-payments?utm_source=popup&utm_medium=website",
+    app: "https://app.relaypay.io/personal/sell-crypto/bill-payments?utm_source=popup&utm_medium=website",
+  },
+  DID_YOU_KNOW_SELL_THIRD_PARTY: {
+    webflow:
+      "https://www.relaypay.io/post/accept-crypto-payments-australia-business-guide?utm_source=popup&utm_medium=website",
+    app: "https://www.relaypay.io/post/accept-crypto-payments-australia-business-guide?utm_source=popup&utm_medium=website",
+  },
+  DID_YOU_KNOW_SELL_SELF_TRANSFER: {
+    webflow:
+      "https://www.relaypay.io/crypto-bank-transfer?utm_source=popup&utm_medium=website",
+    app: "https://app.relaypay.io/personal/sell-crypto?utm_source=popup&utm_medium=website",
+  },
+  DID_YOU_KNOW_SELL_INTERNATIONAL_TRANSFER: {
+    webflow: "https://www.relaypay.io/crypto-bank-transfer",
+    app: "https://app.relaypay.io/personal/sell-crypto?utm_source=popup&utm_medium=website",
+  },
+  DID_YOU_KNOW_SELL_GIFT_CARD: {
+    webflow: "https://www.relaypay.io/gift-card-purchase",
+    app: "https://app.relaypay.io/personal/sell-crypto/gift-cards?utm_source=popup&utm_medium=website",
+  },
+  DID_YOU_KNOW_BUY: {
+    webflow:
+      "https://www.relaypay.io/buy-crypto?utm_source=popup&utm_medium=website",
+    app: "https://app.relaypay.io/personal/buy-crypto?utm_source=popup&utm_medium=website",
+  },
+  DID_YOU_KNOW_SIGN_UP: {
+    webflow:
+      "https://app.relaypay.io/sign-up?utm_source=popup&utm_medium=website",
+    app: "https://app.relaypay.io/personal/sell-crypto?utm_source=popup&utm_medium=website",
+  },
+  SCAM_INFO: {
+    webflow:
+      "https://www.relaypay.io/post/crypto-investment-scams-australia-how-to-avoid?utm_source=popup&utm_medium=website",
+    app: "https://www.relaypay.io/post/crypto-investment-scams-australia-how-to-avoid?utm_source=popup&utm_medium=website",
+  },
+  DID_YOU_KNOW_REFERRAL_SIGNUP: {
+    webflow: "https://www.relaypay.io/referral",
+    app: "https://app.relaypay.io/personal/profile/referrals?utm_source=popup&utm_medium=website",
+  },
+  DID_YOU_KNOW_REFERRAL_REDEMPTION: {
+    webflow: "https://www.relaypay.io/referral",
+    app: "https://app.relaypay.io/personal/profile/referrals?utm_source=popup&utm_medium=website",
   },
 };
