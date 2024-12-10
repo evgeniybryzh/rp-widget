@@ -31,6 +31,7 @@ const Widget: FC<WidgetProps> = ({ isWebflow }) => {
         coinSymbol={cardContent?.coinSymbol}
         title={cardContent?.title}
         text={cardContent?.text}
+        iconUrl={cardContent?.iconUrl}
       />
     </div>
   );

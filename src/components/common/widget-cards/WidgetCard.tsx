@@ -22,6 +22,7 @@ interface WidgetCardProps {
   coinSymbol?: string | null;
   title?: string | null;
   text?: string | null;
+  iconUrl?: string | null;
 }
 const WidgetCard: FC<WidgetCardProps> = ({
   category,
@@ -36,10 +37,14 @@ const WidgetCard: FC<WidgetCardProps> = ({
   coinSymbol,
   text,
   title,
+  iconUrl,
 }) => {
   const coinLink = useMemo(() => {
+    if (iconUrl && iconUrl?.length > 0) {
+      return iconUrl;
+    }
     return getCoinLogoLink(cryptoCurrency, coinSymbol);
-  }, [coinSymbol, cryptoCurrency]);
+  }, [coinSymbol, cryptoCurrency, iconUrl]);
 
   switch (category) {
     case "SELL_BPAY_BILL":
@@ -323,6 +328,8 @@ const WidgetCard: FC<WidgetCardProps> = ({
           onClick={hideWidget}
           text={text}
           period={period || ""}
+          coinLink={coinLink}
+          title={title}
         />
       );
 

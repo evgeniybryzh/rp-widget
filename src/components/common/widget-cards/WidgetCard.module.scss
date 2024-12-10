@@ -49,6 +49,10 @@
   text-align: left;
   color: rgba(89, 102, 150, 1);
 
+  span {
+    font-weight: 600;
+  }
+
   @media screen and (max-width: 768px) {
     font-size: 12px;
   }

@@ -2,32 +2,57 @@ import { FC } from "react";
 import styles from "../WidgetCard.module.scss";
 import IconExit from "../../Icons/IconExit";
 import IconTrustpilot from "../../Icons/IconTrustpilot";
+import IconTrustpilotReview from "../../Icons/IconTrustpilotReview";
 
 interface WidgetCardReviewProps {
+  title?: string | null;
   text?: string | null;
   CTALink: string;
   onClick: () => void;
   period: string;
+  coinLink: string;
 }
 
 const WidgetCardReview: FC<WidgetCardReviewProps> = ({
+  title,
   text,
   CTALink,
   onClick,
   period,
+  coinLink,
 }) => {
   return (
     <div className={styles.card}>
       <div className={styles.icon}>
-        <IconTrustpilot />
+        {coinLink && coinLink?.length > 0 ? (
+          <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+        ) : (
+          <IconTrustpilot />
+        )}
       </div>
       <div className={styles.content}>
-        <div className={styles.contentTitle}>Trustpilot Review * * * * *</div>
-        <div
-          className={styles.contentText}
-          dangerouslySetInnerHTML={{ __html: text || "" }}
-        />
-        <div className={styles.contentPeriod}>{period}</div>
+        {title && <div className={styles.contentTitle}>{title}</div>}
+
+        {!title && (
+          <div className={styles.contentTitle}>
+            <IconTrustpilotReview />
+          </div>
+        )}
+
+        {text && (
+          <div
+            className={styles.contentText}
+            dangerouslySetInnerHTML={{ __html: text }}
+          />
+        )}
+
+        {!text && (
+          <div className={styles.contentText}>
+            RelayPay received <span>5 stars on TrustPilot.</span>
+          </div>
+        )}
+
+        <div className={styles.contentPeriod}>{period || "TODAY"}</div>
         <a
           className={styles.contentLink}
           href={CTALink}
