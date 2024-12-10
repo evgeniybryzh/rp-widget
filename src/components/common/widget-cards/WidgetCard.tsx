@@ -6,7 +6,7 @@ import WidgetCardReview from "./components/WidgetCardReview";
 import IconExit from "../Icons/IconExit";
 import IconGiftCard from "../Icons/IconGiftCard";
 import IconRelayPay from "../Icons/IconRelayPay";
-import Icon from "react-crypto-icons";
+import { getCoinLogoLink } from "../../../utils/getCoinLogo";
 
 interface WidgetCardProps {
   category?: CategoryType | null;
@@ -37,22 +37,17 @@ const WidgetCard: FC<WidgetCardProps> = ({
   text,
   title,
 }) => {
-  const IconComponent = useMemo(
-    () => (
-      <Icon
-        name={coinSymbol?.toLowerCase() || ""}
-        size={25}
-        className={styles.icon}
-      />
-    ),
-    [coinSymbol]
-  );
+  const coinLink = useMemo(() => {
+    return getCoinLogoLink(cryptoCurrency, coinSymbol);
+  }, [coinSymbol, cryptoCurrency]);
 
   switch (category) {
     case "SELL_BPAY_BILL":
       return (
         <div className={styles.card}>
-          <div>{IconComponent}</div>
+          <div>
+            <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+          </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
               Someone in <span>{cityName}</span> paid a bill <br /> via{" "}
@@ -77,7 +72,9 @@ const WidgetCard: FC<WidgetCardProps> = ({
     case "SELL_BPAY_CREDIT_CARD":
       return (
         <div className={styles.card}>
-          <div>{IconComponent}</div>
+          <div>
+            <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+          </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
               Someone in <span>{cityName}</span> paid their <br />
@@ -103,7 +100,9 @@ const WidgetCard: FC<WidgetCardProps> = ({
     case "SELL_THIRD_PARTY_TRANSFER":
       return (
         <div className={styles.card}>
-          <div>{IconComponent}</div>
+          <div>
+            <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+          </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
               Someone in <span>{cityName}</span> paid dollars <br /> to a{" "}
@@ -129,7 +128,9 @@ const WidgetCard: FC<WidgetCardProps> = ({
     case "SELL_SELF_TRANSFER":
       return (
         <div className={styles.card}>
-          <div>{IconComponent}</div>
+          <div>
+            <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+          </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
               Someone in <span>{cityName}</span> sent dollars <br /> to{" "}
@@ -155,7 +156,9 @@ const WidgetCard: FC<WidgetCardProps> = ({
     case "SELL_INTERNATIONAL_TRANSFER":
       return (
         <div className={styles.card}>
-          <div>{IconComponent}</div>
+          <div>
+            <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+          </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
               Someone in <span>{cityName}</span> transferred <br /> to their{" "}
