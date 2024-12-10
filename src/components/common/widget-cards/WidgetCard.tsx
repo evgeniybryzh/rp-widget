@@ -8,6 +8,11 @@ import IconGiftCard from "../Icons/IconGiftCard";
 import IconRelayPay from "../Icons/IconRelayPay";
 import { getCoinLogoLink } from "../../../utils/getCoinLogo";
 import { getCTALinks } from "../../../utils/functions";
+import {
+  BTC_ICON_LINK,
+  DID_YOU_KNOW_CATEGORIES,
+  REVIEW_CATEGORIES,
+} from "../../../constants/constants";
 
 interface WidgetCardProps {
   category?: CategoryType | null;
@@ -40,12 +45,20 @@ const WidgetCard: FC<WidgetCardProps> = ({
   title,
   iconUrl,
 }) => {
-  const coinLink = useMemo(() => {
+  const logoLink = useMemo(() => {
     if (iconUrl && iconUrl?.length > 0) {
       return iconUrl;
     }
+
+    if (
+      DID_YOU_KNOW_CATEGORIES.includes(category as CategoryType) ||
+      REVIEW_CATEGORIES.includes(category as CategoryType)
+    ) {
+      return null;
+    }
+
     return getCoinLogoLink(cryptoCurrency, coinSymbol);
-  }, [coinSymbol, cryptoCurrency, iconUrl]);
+  }, [category, coinSymbol, cryptoCurrency, iconUrl]);
 
   const cardCTALink = useMemo(() => {
     if (CTALink && CTALink?.length > 0) {
@@ -60,7 +73,11 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+            <img
+              className={styles.icon}
+              src={logoLink || BTC_ICON_LINK}
+              alt="Crypto logo"
+            />
           </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
@@ -87,7 +104,11 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+            <img
+              className={styles.icon}
+              src={logoLink || BTC_ICON_LINK}
+              alt="Crypto logo"
+            />
           </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
@@ -115,7 +136,11 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+            <img
+              className={styles.icon}
+              src={logoLink || BTC_ICON_LINK}
+              alt="Crypto logo"
+            />
           </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
@@ -143,7 +168,11 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+            <img
+              className={styles.icon}
+              src={logoLink || BTC_ICON_LINK}
+              alt="Crypto logo"
+            />
           </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
@@ -171,7 +200,11 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+            <img
+              className={styles.icon}
+              src={logoLink || BTC_ICON_LINK}
+              alt="Crypto logo"
+            />
           </div>
           <div className={styles.content}>
             <div className={styles.contentText}>
@@ -337,7 +370,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
           onClick={hideWidget}
           text={text}
           period={period || ""}
-          coinLink={coinLink}
+          logoLink={logoLink}
           title={title}
         />
       );
@@ -353,12 +386,13 @@ const WidgetCard: FC<WidgetCardProps> = ({
     case "DID_YOU_KNOW_REFERRAL_REDEMPTION":
       return (
         <WidgetCardDidYouKnow
+          category={category}
           CTALink={cardCTALink}
-          CTAText="Read our guide >"
           onClick={hideWidget}
-          iconName="metamask"
           text={text}
           title={title}
+          period={period || ""}
+          logoLink={logoLink}
         />
       );
 

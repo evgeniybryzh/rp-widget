@@ -4,6 +4,23 @@ export const INITIAL_START_DELAY = 1000;
 
 export const REFETCH_CARD_DELAY = 10000;
 
+export const DID_YOU_KNOW_CATEGORIES: CategoriesType = [
+  "DID_YOU_KNOW_SELL_BPAY",
+  "DID_YOU_KNOW_SELL_THIRD_PARTY",
+  "DID_YOU_KNOW_SELL_SELF_TRANSFER",
+  "DID_YOU_KNOW_SELL_INTERNATIONAL_TRANSFER",
+  "DID_YOU_KNOW_SELL_GIFT_CARD",
+  "DID_YOU_KNOW_BUY",
+  "DID_YOU_KNOW_SIGN_UP",
+  "DID_YOU_KNOW_REFERRAL_SIGNUP",
+  "DID_YOU_KNOW_REFERRAL_REDEMPTION",
+];
+
+export const REVIEW_CATEGORIES: CategoriesType = [
+  "REVIEW_TEMPLATE1",
+  "REVIEW_TEMPLATE2",
+];
+
 export const CATEGORIES: CategoriesType = [
   "SELL_BPAY_BILL",
   "SELL_BPAY_CREDIT_CARD",
@@ -17,15 +34,8 @@ export const CATEGORIES: CategoriesType = [
   "REFERRAL_REDEMPTION",
   "REVIEW_TEMPLATE1",
   "REVIEW_TEMPLATE2",
-  "DID_YOU_KNOW_SELL_BPAY",
-  "DID_YOU_KNOW_SELL_THIRD_PARTY",
-  "DID_YOU_KNOW_SELL_SELF_TRANSFER",
-  "DID_YOU_KNOW_SELL_INTERNATIONAL_TRANSFER",
-  "DID_YOU_KNOW_SELL_GIFT_CARD",
-  "DID_YOU_KNOW_BUY",
-  "DID_YOU_KNOW_SIGN_UP",
-  "DID_YOU_KNOW_REFERRAL_SIGNUP",
-  "DID_YOU_KNOW_REFERRAL_REDEMPTION",
+  ...REVIEW_CATEGORIES,
+  ...DID_YOU_KNOW_CATEGORIES,
 ];
 
 export const SESSION_STORAGE_NAME = "showWidget";
@@ -141,3 +151,6 @@ export const CTA_LINKS: {
     app: "https://app.relaypay.io/personal/profile/referrals?utm_source=popup&utm_medium=website",
   },
 };
+
+export const BTC_ICON_LINK =
+  "https://cryptologos.cc/logos/bitcoin-btc-logo.svg";

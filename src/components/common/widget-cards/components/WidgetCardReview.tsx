@@ -10,7 +10,7 @@ interface WidgetCardReviewProps {
   CTALink: string;
   onClick: () => void;
   period: string;
-  coinLink: string;
+  logoLink: string | null;
 }
 
 const WidgetCardReview: FC<WidgetCardReviewProps> = ({
@@ -19,13 +19,13 @@ const WidgetCardReview: FC<WidgetCardReviewProps> = ({
   CTALink,
   onClick,
   period,
-  coinLink,
+  logoLink,
 }) => {
   return (
     <div className={styles.card}>
       <div className={styles.icon}>
-        {coinLink && coinLink?.length > 0 ? (
-          <img className={styles.icon} src={coinLink} alt="Crypto logo" />
+        {logoLink && logoLink?.length > 0 ? (
+          <img className={styles.icon} src={logoLink} alt="Crypto logo" />
         ) : (
           <IconTrustpilot />
         )}
