@@ -35,8 +35,6 @@ const useFetchCardData = ({
 }: UseFetchCardDataProps): {
   getCardData: typeof fetchData;
 } => {
-  console.log(WEBFLOW_API_URL);
-
   const fetchData = useCallback(
     async (onSuccess?: (cardData: CardDataResponse) => void) => {
       if (!WEBFLOW_API_URL || !APP_API_URL) return;
