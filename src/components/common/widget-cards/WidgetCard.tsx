@@ -68,6 +68,8 @@ const WidgetCard: FC<WidgetCardProps> = ({
     return getCTALinks(category, isWebflow);
   }, [CTALink, category, isWebflow]);
 
+  console.log(text);
+
   switch (category) {
     case "SELL_BPAY_BILL":
       return (
@@ -80,10 +82,18 @@ const WidgetCard: FC<WidgetCardProps> = ({
             />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone in <span>{cityName}</span> paid a bill <br /> via{" "}
-              <span>BPAY</span> using <span>{cryptoCurrency}</span>. ✓
-            </div>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>
+                Someone in <span>{cityName}</span> paid a bill <br /> via{" "}
+                <span>BPAY</span> using <span>{cryptoCurrency}</span>. ✓
+              </div>
+            )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
@@ -111,11 +121,19 @@ const WidgetCard: FC<WidgetCardProps> = ({
             />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone in <span>{cityName}</span> paid their <br />
-              <span>{bankName} credit card</span> using{" "}
-              <span>{cryptoCurrency}</span>. ✓
-            </div>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>
+                Someone in <span>{cityName}</span> paid their <br />
+                <span>{bankName} credit card</span> using{" "}
+                <span>{cryptoCurrency}</span>. ✓
+              </div>
+            )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
@@ -143,11 +161,19 @@ const WidgetCard: FC<WidgetCardProps> = ({
             />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone in <span>{cityName}</span> paid dollars <br /> to a{" "}
-              <span>{bankName}</span> account using{" "}
-              <span>{cryptoCurrency}</span>. ✓
-            </div>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>
+                Someone in <span>{cityName}</span> paid dollars <br /> to a{" "}
+                <span>{bankName}</span> account using{" "}
+                <span>{cryptoCurrency}</span>. ✓
+              </div>
+            )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
@@ -175,11 +201,19 @@ const WidgetCard: FC<WidgetCardProps> = ({
             />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone in <span>{cityName}</span> sent dollars <br /> to{" "}
-              <span>{bankName}</span> by selling <span>{cryptoCurrency}</span>.
-              ✓
-            </div>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>
+                Someone in <span>{cityName}</span> sent dollars <br /> to{" "}
+                <span>{bankName}</span> by selling <span>{cryptoCurrency}</span>
+                . ✓
+              </div>
+            )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
@@ -207,11 +241,19 @@ const WidgetCard: FC<WidgetCardProps> = ({
             />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone in <span>{cityName}</span> transferred <br /> to their{" "}
-              <span>bank in {countryName}</span> using{" "}
-              <span>{cryptoCurrency}</span>. ✓
-            </div>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>
+                Someone in <span>{cityName}</span> transferred <br /> to their{" "}
+                <span>bank in {countryName}</span> using{" "}
+                <span>{cryptoCurrency}</span>. ✓
+              </div>
+            )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
@@ -235,11 +277,19 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <IconGiftCard />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone in <span>{cityName}</span> purchased <br /> a{" "}
-              <span>RelayPay Gift Card</span> using{" "}
-              <span>{cryptoCurrency}</span>. ✓
-            </div>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>
+                Someone in <span>{cityName}</span> purchased <br /> a{" "}
+                <span>RelayPay Gift Card</span> using{" "}
+                <span>{cryptoCurrency}</span>. ✓
+              </div>
+            )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
@@ -263,9 +313,17 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <IconRelayPay />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone in <span>{cityName} signed up</span> to RelayPay.
-            </div>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>
+                Someone in <span>{cityName} signed up</span> to RelayPay.
+              </div>
+            )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
@@ -289,10 +347,18 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <IconRelayPay />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone used RelayPay to <br />
-              <span>buy {cryptoCurrency}</span>, sent to their wallet. ✓
-            </div>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>
+                Someone used RelayPay to <br />
+                <span>buy {cryptoCurrency}</span>, sent to their wallet. ✓
+              </div>
+            )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
@@ -316,9 +382,17 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <IconRelayPay />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone's <span>referral</span> signed up to RelayPay.
-            </div>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>
+                Someone's <span>referral</span> signed up to RelayPay.
+              </div>
+            )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
@@ -342,10 +416,18 @@ const WidgetCard: FC<WidgetCardProps> = ({
             <IconRelayPay />
           </div>
           <div className={styles.content}>
-            <div className={styles.contentText}>
-              Someone <span>earned reward dollars</span> <br /> when their
-              referral made a transaction.
-            </div>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>
+                Someone <span>earned reward dollars</span> <br /> when their
+                referral made a transaction.
+              </div>
+            )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
               className={styles.contentLink}
