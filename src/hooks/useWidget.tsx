@@ -47,8 +47,6 @@ const useWidget = ({ isWebflow = false }: { isWebflow: boolean }) => {
         setTimeout(() => {
           hideWidget();
           setTimeout(() => {
-            console.log(123);
-
             getCardData(onFetchSuccess);
           }, 1000);
         }, REFETCH_CARD_DELAY);
@@ -65,8 +63,6 @@ const useWidget = ({ isWebflow = false }: { isWebflow: boolean }) => {
 
     if (!isShown && Boolean(shouldShowWidget)) {
       setTimeout(() => {
-        console.log(111);
-
         getCardData(onFetchSuccess);
       }, INITIAL_START_DELAY);
     }

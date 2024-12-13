@@ -68,8 +68,6 @@ const WidgetCard: FC<WidgetCardProps> = ({
     return getCTALinks(category, isWebflow);
   }, [CTALink, category, isWebflow]);
 
-  console.log(text);
-
   switch (category) {
     case "SELL_BPAY_BILL":
       return (
