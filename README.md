@@ -34,3 +34,9 @@ To use this widget on your webpage:
     Add this container element to your webpage:
     ```html
    <div id="rp-widget" data-is-webflow></div>
+
+
+## Notes
+- The data-is-webflow attribute specifies the widget type:
+    - Private widget: Omit the attribute.
+    - Public widget: Include the attribute.
