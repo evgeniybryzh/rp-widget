@@ -18,7 +18,7 @@ interface WidgetCardProps {
   category?: CategoryType | null;
   hideWidget: () => void;
   isWebflow: boolean;
-  CTALink: string;
+  CTALink: string | null;
 
   cityName?: string | null;
   cryptoCurrency?: string | null;

@@ -17,11 +17,10 @@ const Widget: FC<WidgetProps> = ({ isWebflow }) => {
         category={cardContent?.template}
         hideWidget={hideWidget}
         isWebflow={isWebflow}
-        // CTALink={getCTALinks(cardContent?.template, isWebflow)}
         CTALink={
           (isWebflow
             ? cardContent?.anonymousLink
-            : cardContent?.loggedInLink) || ""
+            : cardContent?.loggedInLink) || null
         }
         cityName={cardContent?.city}
         cryptoCurrency={cardContent?.coinName}
