@@ -26,37 +26,37 @@ const WidgetCardDidYouKnow: FC<WidgetCardDidYouKnowProps> = ({
   const CTAText = useMemo(() => {
     switch (category) {
       case "DID_YOU_KNOW_BUY":
-        return "Read our guide >";
+        return "Learn more >";
 
       case "DID_YOU_KNOW_REFERRAL_REDEMPTION":
-        return "Read our guide >";
+        return "Learn more >";
 
       case "DID_YOU_KNOW_REFERRAL_SIGNUP":
-        return "Read our guide >";
+        return "Learn more >";
 
       case "DID_YOU_KNOW_SELL_BPAY":
-        return "Read our guide >";
+        return "Learn more >";
 
       case "DID_YOU_KNOW_SELL_GIFT_CARD":
-        return "Read our guide >";
+        return "Learn more >";
 
       case "DID_YOU_KNOW_SELL_INTERNATIONAL_TRANSFER":
-        return "Read our guide >";
+        return "Learn more >";
 
       case "DID_YOU_KNOW_SELL_SELF_TRANSFER":
-        return "Read our guide >";
+        return "Learn more >";
 
       case "DID_YOU_KNOW_SELL_THIRD_PARTY":
-        return "Read our guide >";
+        return "Learn more >";
 
       case "DID_YOU_KNOW_SIGN_UP":
-        return "Read our guide >";
+        return "Learn more >";
 
       case "DID_YOU_KNOW_MERCHANT":
-        return "Read our guide >";
+        return "Learn more >";
 
       default:
-        return "Read our guide >";
+        return "Learn more >";
     }
   }, [category]);
 

@@ -146,11 +146,13 @@ export const CTA_LINKS: {
     app: "https://app.relaypay.io/personal/profile/referrals?utm_source=popup&utm_medium=website",
   },
   DID_YOU_KNOW_MERCHANT: {
-    webflow: "https://www.relaypay.io/",
-    app: "https://www.relaypay.io/",
+    webflow:
+      "https://www.relaypay.io/business?utm_source=popup&utm_medium=website",
+    app: "https://www.relaypay.io/business?utm_source=popup&utm_medium=website",
   },
   MERCHANT: {
-    webflow: "https://www.relaypay.io/",
-    app: "https://www.relaypay.io/",
+    webflow:
+      "https://www.relaypay.io/business?utm_source=popup&utm_medium=website",
+    app: "https://www.relaypay.io/business?utm_source=popup&utm_medium=website",
   },
 };
