@@ -11,7 +11,7 @@ interface WidgetCardDidYouKnowProps {
   onClick: () => void;
   category: CategoryType;
   period: string;
-  logoLink: string | null;
+  logoLink?: string;
 }
 
 const WidgetCardDidYouKnow: FC<WidgetCardDidYouKnowProps> = ({

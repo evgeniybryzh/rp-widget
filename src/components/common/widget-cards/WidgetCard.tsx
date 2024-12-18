@@ -6,13 +6,13 @@ import WidgetCardReview from "./components/WidgetCardReview";
 import IconExit from "../Icons/IconExit";
 import IconGiftCard from "../Icons/IconGiftCard";
 import IconRelayPay from "../Icons/IconRelayPay";
-import { getCoinLogoLink } from "../../../utils/getCoinLogo";
 import { getCTALinks } from "../../../utils/functions";
 import {
   BTC_ICON_LINK,
   DID_YOU_KNOW_CATEGORIES,
   REVIEW_CATEGORIES,
 } from "../../../constants/constants";
+import CryptoCoin from "../Icons/coins/CryptoCoin";
 
 interface WidgetCardProps {
   category?: CategoryType | null;
@@ -49,15 +49,6 @@ const WidgetCard: FC<WidgetCardProps> = ({
     if (iconUrl && iconUrl?.length > 0) {
       return iconUrl;
     }
-
-    if (
-      DID_YOU_KNOW_CATEGORIES.includes(category as CategoryType) ||
-      REVIEW_CATEGORIES.includes(category as CategoryType)
-    ) {
-      return null;
-    }
-
-    return getCoinLogoLink(cryptoCurrency, coinSymbol);
   }, [category, coinSymbol, cryptoCurrency, iconUrl]);
 
   const cardCTALink = useMemo(() => {
@@ -73,11 +64,11 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <img
-              className={styles.icon}
-              src={logoLink || BTC_ICON_LINK}
-              alt="Crypto logo"
-            />
+            {logoLink && logoLink?.length > 0 ? (
+              <img className={styles.icon} src={logoLink} alt="Crypto logo" />
+            ) : (
+              <CryptoCoin name={coinSymbol} className={styles.icon} />
+            )}
           </div>
           <div className={styles.content}>
             {text && text.length > 0 && (
@@ -112,11 +103,11 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <img
-              className={styles.icon}
-              src={logoLink || BTC_ICON_LINK}
-              alt="Crypto logo"
-            />
+            {logoLink && logoLink?.length > 0 ? (
+              <img className={styles.icon} src={logoLink} alt="Crypto logo" />
+            ) : (
+              <CryptoCoin name={coinSymbol} className={styles.icon} />
+            )}
           </div>
           <div className={styles.content}>
             {text && text.length > 0 && (
@@ -152,11 +143,11 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <img
-              className={styles.icon}
-              src={logoLink || BTC_ICON_LINK}
-              alt="Crypto logo"
-            />
+            {logoLink && logoLink?.length > 0 ? (
+              <img className={styles.icon} src={logoLink} alt="Crypto logo" />
+            ) : (
+              <CryptoCoin name={coinSymbol} className={styles.icon} />
+            )}
           </div>
           <div className={styles.content}>
             {text && text.length > 0 && (
@@ -192,11 +183,11 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <img
-              className={styles.icon}
-              src={logoLink || BTC_ICON_LINK}
-              alt="Crypto logo"
-            />
+            {logoLink && logoLink?.length > 0 ? (
+              <img className={styles.icon} src={logoLink} alt="Crypto logo" />
+            ) : (
+              <CryptoCoin name={coinSymbol} className={styles.icon} />
+            )}
           </div>
           <div className={styles.content}>
             {text && text.length > 0 && (
@@ -232,11 +223,11 @@ const WidgetCard: FC<WidgetCardProps> = ({
       return (
         <div className={styles.card}>
           <div>
-            <img
-              className={styles.icon}
-              src={logoLink || BTC_ICON_LINK}
-              alt="Crypto logo"
-            />
+            {logoLink && logoLink?.length > 0 ? (
+              <img className={styles.icon} src={logoLink} alt="Crypto logo" />
+            ) : (
+              <CryptoCoin name={coinSymbol} className={styles.icon} />
+            )}
           </div>
           <div className={styles.content}>
             {text && text.length > 0 && (

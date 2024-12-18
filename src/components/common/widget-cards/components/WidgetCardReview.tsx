@@ -10,7 +10,7 @@ interface WidgetCardReviewProps {
   CTALink: string;
   onClick: () => void;
   period: string;
-  logoLink: string | null;
+  logoLink?: string;
 }
 
 const WidgetCardReview: FC<WidgetCardReviewProps> = ({
