@@ -33,8 +33,6 @@ export const CATEGORIES: CategoriesType = [
   "SIGN_UP",
   "REFERRAL_SIGNUP",
   "REFERRAL_REDEMPTION",
-  "REVIEW_TEMPLATE1",
-  "REVIEW_TEMPLATE2",
   "MERCHANT",
   ...REVIEW_CATEGORIES,
   ...DID_YOU_KNOW_CATEGORIES,
@@ -139,11 +137,6 @@ export const CTA_LINKS: {
       "https://app.relaypay.io/sign-up?utm_source=popup&utm_medium=website",
     app: "https://app.relaypay.io/personal/sell-crypto?utm_source=popup&utm_medium=website",
   },
-  SCAM_INFO: {
-    webflow:
-      "https://www.relaypay.io/post/crypto-investment-scams-australia-how-to-avoid?utm_source=popup&utm_medium=website",
-    app: "https://www.relaypay.io/post/crypto-investment-scams-australia-how-to-avoid?utm_source=popup&utm_medium=website",
-  },
   DID_YOU_KNOW_REFERRAL_SIGNUP: {
     webflow: "https://www.relaypay.io/referral",
     app: "https://app.relaypay.io/personal/profile/referrals?utm_source=popup&utm_medium=website",
@@ -161,6 +154,3 @@ export const CTA_LINKS: {
     app: "https://www.relaypay.io/",
   },
 };
-
-export const BTC_ICON_LINK =
-  "https://cryptologos.cc/logos/bitcoin-btc-logo.svg";

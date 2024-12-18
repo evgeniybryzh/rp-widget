@@ -7,11 +7,6 @@ import IconExit from "../Icons/IconExit";
 import IconGiftCard from "../Icons/IconGiftCard";
 import IconRelayPay from "../Icons/IconRelayPay";
 import { getCTALinks } from "../../../utils/functions";
-import {
-  BTC_ICON_LINK,
-  DID_YOU_KNOW_CATEGORIES,
-  REVIEW_CATEGORIES,
-} from "../../../constants/constants";
 import CryptoCoin from "../Icons/coins/CryptoCoin";
 
 interface WidgetCardProps {
@@ -49,7 +44,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
     if (iconUrl && iconUrl?.length > 0) {
       return iconUrl;
     }
-  }, [category, coinSymbol, cryptoCurrency, iconUrl]);
+  }, [iconUrl]);
 
   const cardCTALink = useMemo(() => {
     if (CTALink && CTALink?.length > 0) {
