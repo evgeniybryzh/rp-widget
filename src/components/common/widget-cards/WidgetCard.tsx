@@ -527,8 +527,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
               {cryptoCurrency && (
                 <>
                   <br />
-                  using
-                  <span>{cryptoCurrency}</span>. ✓
+                  using <span>{cryptoCurrency}</span>. ✓
                 </>
               )}
             </div>

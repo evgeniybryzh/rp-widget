@@ -11,9 +11,16 @@
   margin-right: 20px;
   z-index: 99999;
   background-color: white;
+  width: 420px;
 
   @media screen and (max-width: 768px) {
     padding: 12px;
+  }
+
+  @media screen and (max-width: 500px) {
+    margin-right: 0px;
+    width: auto;
+    right: 20px;
   }
 }
 
