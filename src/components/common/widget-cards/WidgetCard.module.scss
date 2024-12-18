@@ -16,8 +16,12 @@
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  gap: 2px;
+  gap: 4px;
   width: 100%;
+
+  @media screen and (max-width: 500px) {
+    gap: 2px;
+  }
 }
 
 .exit {
