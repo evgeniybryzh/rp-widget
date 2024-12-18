@@ -74,8 +74,14 @@ const WidgetCard: FC<WidgetCardProps> = ({
             )}
             {(!text || text.length === 0) && (
               <div className={styles.contentText}>
-                Someone in <span>{cityName}</span> paid a bill <br /> via{" "}
-                <span>BPAY</span> using <span>{cryptoCurrency}</span>. ✓
+                Someone{" "}
+                {cityName && cityName.length > 0 && (
+                  <>
+                    in <span>{cityName}</span>
+                  </>
+                )}{" "}
+                paid a bill <br /> via <span>BPAY</span> using{" "}
+                <span>{cryptoCurrency}</span>. ✓
               </div>
             )}
             <div className={styles.contentPeriod}>{period}</div>
@@ -113,7 +119,13 @@ const WidgetCard: FC<WidgetCardProps> = ({
             )}
             {(!text || text.length === 0) && (
               <div className={styles.contentText}>
-                Someone in <span>{cityName}</span> paid their <br />
+                Someone{" "}
+                {cityName && cityName.length > 0 && (
+                  <>
+                    in <span>{cityName}</span>
+                  </>
+                )}{" "}
+                paid their <br />
                 <span>{bankName} credit card</span> using{" "}
                 <span>{cryptoCurrency}</span>. ✓
               </div>
@@ -153,8 +165,13 @@ const WidgetCard: FC<WidgetCardProps> = ({
             )}
             {(!text || text.length === 0) && (
               <div className={styles.contentText}>
-                Someone in <span>{cityName}</span> paid dollars <br /> to a{" "}
-                <span>{bankName}</span> account using{" "}
+                Someone{" "}
+                {cityName && cityName.length > 0 && (
+                  <>
+                    in <span>{cityName}</span>
+                  </>
+                )}{" "}
+                paid dollars <br /> to a <span>{bankName}</span> account using{" "}
                 <span>{cryptoCurrency}</span>. ✓
               </div>
             )}
@@ -193,9 +210,14 @@ const WidgetCard: FC<WidgetCardProps> = ({
             )}
             {(!text || text.length === 0) && (
               <div className={styles.contentText}>
-                Someone in <span>{cityName}</span> sent dollars <br /> to{" "}
-                <span>{bankName}</span> by selling <span>{cryptoCurrency}</span>
-                . ✓
+                Someone{" "}
+                {cityName && cityName.length > 0 && (
+                  <>
+                    in <span>{cityName}</span>
+                  </>
+                )}{" "}
+                sent dollars <br /> to <span>{bankName}</span> by selling{" "}
+                <span>{cryptoCurrency}</span>. ✓
               </div>
             )}
             <div className={styles.contentPeriod}>{period}</div>
@@ -233,9 +255,14 @@ const WidgetCard: FC<WidgetCardProps> = ({
             )}
             {(!text || text.length === 0) && (
               <div className={styles.contentText}>
-                Someone in <span>{cityName}</span> transferred <br /> to their{" "}
-                <span>bank in {countryName}</span> using{" "}
-                <span>{cryptoCurrency}</span>. ✓
+                Someone{" "}
+                {cityName && cityName.length > 0 && (
+                  <>
+                    in <span>{cityName}</span>
+                  </>
+                )}{" "}
+                transferred <br /> to their <span>bank in {countryName}</span>{" "}
+                using <span>{cryptoCurrency}</span>. ✓
               </div>
             )}
             <div className={styles.contentPeriod}>{period}</div>
@@ -269,8 +296,13 @@ const WidgetCard: FC<WidgetCardProps> = ({
             )}
             {(!text || text.length === 0) && (
               <div className={styles.contentText}>
-                Someone in <span>{cityName}</span> purchased <br /> a{" "}
-                <span>RelayPay Gift Card</span> using{" "}
+                Someone{" "}
+                {cityName && cityName.length > 0 && (
+                  <>
+                    in <span>{cityName}</span>
+                  </>
+                )}{" "}
+                purchased <br /> a <span>RelayPay Gift Card</span> using{" "}
                 <span>{cryptoCurrency}</span>. ✓
               </div>
             )}
