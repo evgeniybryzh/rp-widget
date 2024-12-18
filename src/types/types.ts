@@ -6,6 +6,7 @@ export type CategoryType =
   | "SELL_INTERNATIONAL_TRANSFER"
   | "SELL_GIFT_CARD"
   | "BUY"
+  | "MERCHANT"
   | "SIGN_UP"
   | "REFERRAL_SIGNUP"
   | "REFERRAL_REDEMPTION"
@@ -19,7 +20,8 @@ export type CategoryType =
   | "DID_YOU_KNOW_BUY"
   | "DID_YOU_KNOW_SIGN_UP"
   | "DID_YOU_KNOW_REFERRAL_SIGNUP"
-  | "DID_YOU_KNOW_REFERRAL_REDEMPTION";
+  | "DID_YOU_KNOW_REFERRAL_REDEMPTION"
+  | "DID_YOU_KNOW_MERCHANT";
 
 export type CategoriesType = CategoryType[];
 

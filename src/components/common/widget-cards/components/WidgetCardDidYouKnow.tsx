@@ -52,6 +52,9 @@ const WidgetCardDidYouKnow: FC<WidgetCardDidYouKnowProps> = ({
       case "DID_YOU_KNOW_SIGN_UP":
         return "Read our guide >";
 
+      case "DID_YOU_KNOW_MERCHANT":
+        return "Read our guide >";
+
       default:
         return "Read our guide >";
     }

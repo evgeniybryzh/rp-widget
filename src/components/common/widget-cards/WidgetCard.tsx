@@ -364,6 +364,38 @@ const WidgetCard: FC<WidgetCardProps> = ({
               target={"_blank"}
               rel="noreferrer"
             >
+              Make a RelayPay transaction {">"}
+            </a>
+          </div>
+          <div onClick={hideWidget} className={styles.exit}>
+            <IconExit />
+          </div>
+        </div>
+      );
+
+    case "MERCHANT":
+      return (
+        <div className={styles.card}>
+          <div className={styles.icon}>
+            <IconRelayPay />
+          </div>
+          <div className={styles.content}>
+            {text && text.length > 0 && (
+              <div
+                className={styles.contentText}
+                dangerouslySetInnerHTML={{ __html: text }}
+              />
+            )}
+            {(!text || text.length === 0) && (
+              <div className={styles.contentText}>Someone used RelayPay</div>
+            )}
+            <div className={styles.contentPeriod}>{period}</div>
+            <a
+              className={styles.contentLink}
+              href={cardCTALink}
+              target={"_blank"}
+              rel="noreferrer"
+            >
               Buy crypto with PayID or Bank Transfer {">"}
             </a>
           </div>
@@ -464,6 +496,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
     case "DID_YOU_KNOW_SIGN_UP":
     case "DID_YOU_KNOW_REFERRAL_SIGNUP":
     case "DID_YOU_KNOW_REFERRAL_REDEMPTION":
+    case "DID_YOU_KNOW_MERCHANT":
       return (
         <WidgetCardDidYouKnow
           category={category}

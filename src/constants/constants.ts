@@ -14,6 +14,7 @@ export const DID_YOU_KNOW_CATEGORIES: CategoriesType = [
   "DID_YOU_KNOW_SIGN_UP",
   "DID_YOU_KNOW_REFERRAL_SIGNUP",
   "DID_YOU_KNOW_REFERRAL_REDEMPTION",
+  "DID_YOU_KNOW_MERCHANT",
 ];
 
 export const REVIEW_CATEGORIES: CategoriesType = [
@@ -34,6 +35,7 @@ export const CATEGORIES: CategoriesType = [
   "REFERRAL_REDEMPTION",
   "REVIEW_TEMPLATE1",
   "REVIEW_TEMPLATE2",
+  "MERCHANT",
   ...REVIEW_CATEGORIES,
   ...DID_YOU_KNOW_CATEGORIES,
 ];
@@ -149,6 +151,14 @@ export const CTA_LINKS: {
   DID_YOU_KNOW_REFERRAL_REDEMPTION: {
     webflow: "https://www.relaypay.io/referral",
     app: "https://app.relaypay.io/personal/profile/referrals?utm_source=popup&utm_medium=website",
+  },
+  DID_YOU_KNOW_MERCHANT: {
+    webflow: "https://www.relaypay.io/",
+    app: "https://www.relaypay.io/",
+  },
+  MERCHANT: {
+    webflow: "https://www.relaypay.io/",
+    app: "https://www.relaypay.io/",
   },
 };
 
