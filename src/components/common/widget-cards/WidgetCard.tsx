@@ -405,7 +405,10 @@ const WidgetCard: FC<WidgetCardProps> = ({
               />
             )}
             {(!text || text.length === 0) && (
-              <div className={styles.contentText}>Someone used RelayPay</div>
+              <div className={styles.contentText}>
+                <span>Accept crypto payments</span> for your business and simply{" "}
+                <span>be paid in dollars.</span>
+              </div>
             )}
             <div className={styles.contentPeriod}>{period}</div>
             <a
@@ -414,7 +417,7 @@ const WidgetCard: FC<WidgetCardProps> = ({
               target={"_blank"}
               rel="noreferrer"
             >
-              Buy crypto with PayID or Bank Transfer {">"}
+              Discover the business benefits {">"}
             </a>
           </div>
           <div onClick={hideWidget} className={styles.exit}>
