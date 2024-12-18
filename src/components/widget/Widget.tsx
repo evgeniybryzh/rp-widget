@@ -24,7 +24,7 @@ const Widget: FC<WidgetProps> = ({ isWebflow }) => {
         }
         cityName={cardContent?.city}
         cryptoCurrency={cardContent?.coinName}
-        period={cardContent?.timeline}
+        period={cardContent?.timeline?.toLowerCase()}
         bankName={cardContent?.bank}
         countryName={cardContent?.country}
         coinSymbol={cardContent?.coinSymbol}
