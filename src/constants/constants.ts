@@ -4,6 +4,8 @@ export const INITIAL_START_DELAY = 1000;
 
 export const REFETCH_CARD_DELAY = 10000;
 
+export const SESSION_STORAGE_NAME = "showWidget";
+
 export const DID_YOU_KNOW_CATEGORIES: CategoriesType = [
   "DID_YOU_KNOW_SELL_BPAY",
   "DID_YOU_KNOW_SELL_THIRD_PARTY",
@@ -37,8 +39,6 @@ export const CATEGORIES: CategoriesType = [
   ...REVIEW_CATEGORIES,
   ...DID_YOU_KNOW_CATEGORIES,
 ];
-
-export const SESSION_STORAGE_NAME = "showWidget";
 
 export const CTA_LINKS: {
   [key: string]: {
